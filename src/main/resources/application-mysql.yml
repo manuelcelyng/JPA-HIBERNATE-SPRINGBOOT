@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: Jpa-hibernate-application
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/data_jpa?createDatabaseIfNotExist=true  # mysql create automatically the database if it not exist
+    username: root
+    password: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # this means what do we want when the applications start
+    database: mysql
+    show-sql: true

@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: Jpa-hibernate-application
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # this means what do we want when the applications start
+    database: postgresql
+    show-sql: true
