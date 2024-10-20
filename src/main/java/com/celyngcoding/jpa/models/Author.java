@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -32,8 +34,31 @@ public class Author {
             allocationSize = 1
     )*/
     private Integer id;
+
+    @Column(
+            name = "f_name",
+            length = 35
+
+    )
     private String firstName;
     private String lastName;
+
+    @Column(
+            unique = true,
+            nullable = false
+    )
     private String email;
+
     private int age;
+
+    @Column(
+            updatable = false,
+            nullable = false
+    )
+    private LocalDateTime createAt;
+
+    @Column(
+            insertable = false
+    )
+    private LocalDateTime lastModified;
 }
