@@ -1,7 +1,9 @@
 package com.celyngcoding.jpa;
 
 import com.celyngcoding.jpa.models.Author;
+import com.celyngcoding.jpa.models.Video;
 import com.celyngcoding.jpa.repositories.AuthorRepository;
+import com.celyngcoding.jpa.repositories.VideoRepository;
 import org.apache.catalina.core.ApplicationContext;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,18 +18,27 @@ public class JpaApplication {
 	}
 
 
-	//@Bean
+	@Bean
 	public CommandLineRunner commandLineRunner(
-			AuthorRepository repository
+			AuthorRepository repository,
+			VideoRepository videoRepository
 	) {
 		return args -> {
-			var author = Author.builder()
+			/*var author = Author.builder()
 					.firstName("Manuel")
 					.lastName("Cely")
 					.age(24)
 					.email("contact@manucelyng.com")
 					.build();
 			repository.save(author);
+			 */
+
+			var video = Video.builder()
+					.name("abc")
+					.length(5)
+					.build();
+
+			videoRepository.save(video);
 		};
 	}
 
