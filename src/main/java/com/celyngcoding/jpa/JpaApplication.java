@@ -4,6 +4,7 @@ import com.celyngcoding.jpa.models.Author;
 import com.celyngcoding.jpa.models.Video;
 import com.celyngcoding.jpa.repositories.AuthorRepository;
 import com.celyngcoding.jpa.repositories.VideoRepository;
+import com.github.javafaker.Faker;
 import org.apache.catalina.core.ApplicationContext;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,21 +25,32 @@ public class JpaApplication {
 			VideoRepository videoRepository
 	) {
 		return args -> {
-			/*var author = Author.builder()
+
+			for(int i = 0 ; i < 50; i++){
+				Faker faker =  new Faker();
+				var author = Author.builder()
+						.firstName(faker.name().firstName())
+						.lastName(faker.name().lastName())
+						.age(faker.number().numberBetween(20, 80))
+						.email(faker.name().username() + "@celycoding.com")
+						.build();
+				repository.save(author);
+			}
+
+
+
+			var author = Author.builder()
+					.id(1)
 					.firstName("Manuel")
 					.lastName("Cely")
-					.a ge(24)
-					.email("contact@manucelyng.com")
-					.build();
-			repository.save(author);
-			 */
-
-			var video = Video.builder()
-					.name("abc")
-					.length(5)
+					.age(24)
+					.email("manuel@celycoding.com")
 					.build();
 
-			videoRepository.save(video);
+			//repository.save(author);
+
+			// Update Author a set a.age = 22 where a.id =  1
+			repository.updateAuthor(22, 1);
 		};
 	}
 
