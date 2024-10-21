@@ -13,7 +13,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@PrimaryKeyJoinColumn(name = "video_id")
+//@PrimaryKeyJoinColumn(name = "video_id") -> it works with JOINED strategy
 //@DiscriminatorValue("V")
 public class Video extends Resources {
 
