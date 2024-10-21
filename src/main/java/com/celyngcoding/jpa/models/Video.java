@@ -3,6 +3,7 @@ package com.celyngcoding.jpa.models;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -12,7 +13,8 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @Entity
-@DiscriminatorValue("V")
+@PrimaryKeyJoinColumn(name = "video_id")
+//@DiscriminatorValue("V")
 public class Video extends Resources {
 
     private int length;

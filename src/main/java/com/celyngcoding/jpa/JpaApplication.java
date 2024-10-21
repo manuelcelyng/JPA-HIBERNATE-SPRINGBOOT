@@ -27,7 +27,7 @@ public class JpaApplication {
 			/*var author = Author.builder()
 					.firstName("Manuel")
 					.lastName("Cely")
-					.age(24)
+					.a ge(24)
 					.email("contact@manucelyng.com")
 					.build();
 			repository.save(author);
