@@ -1,9 +1,12 @@
 package com.celyngcoding.jpa.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.transaction.Transactional;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.springframework.context.annotation.Lazy;
 
 import java.util.List;
 
@@ -42,7 +45,8 @@ public class Author extends BaseEntity {
     private int age;
 
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors",fetch = FetchType.EAGER)
+    @JsonIgnore
     private List<Course> course;
 
 }

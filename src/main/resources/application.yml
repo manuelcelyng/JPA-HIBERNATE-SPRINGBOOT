@@ -11,6 +11,6 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop # this means what do we want when the applications start
+      ddl-auto: update # this means what do we want when the applications start
     database: postgresql
     show-sql: true

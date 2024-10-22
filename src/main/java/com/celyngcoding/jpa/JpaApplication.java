@@ -4,12 +4,14 @@ import com.celyngcoding.jpa.models.Author;
 import com.celyngcoding.jpa.models.Video;
 import com.celyngcoding.jpa.repositories.AuthorRepository;
 import com.celyngcoding.jpa.repositories.VideoRepository;
+import com.celyngcoding.jpa.specification.AuthorSpecification;
 import com.github.javafaker.Faker;
 import org.apache.catalina.core.ApplicationContext;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.lang.annotation.RetentionPolicy;
 
@@ -36,7 +38,7 @@ public class JpaApplication {
 						.age(faker.number().numberBetween(20, 80))
 						.email(faker.name().username() + "@celycoding.com")
 						.build();
-				repository.save(author);
+				//repository.save(author);
 			}
 
 
@@ -53,7 +55,12 @@ public class JpaApplication {
 
 			// Update Author a set a.age = 22 where a.id =  1
 			//repository.updateAuthor(22, 1);
-			repository.updateByNamedQuery(100,1);
+			//repository.updateByNamedQuery(100,1);
+
+			Specification<Author> spec = Specification
+					.where(AuthorSpecification.hasAge(54))
+					.and(AuthorSpecification.firstnameContains("Cri"));
+			repository.findAll(spec).forEach(System.out::println);
 		};
 	}
 
