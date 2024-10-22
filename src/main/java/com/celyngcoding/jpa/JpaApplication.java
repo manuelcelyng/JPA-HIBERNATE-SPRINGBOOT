@@ -11,6 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.lang.annotation.RetentionPolicy;
+
 @SpringBootApplication
 public class JpaApplication {
 
@@ -50,7 +52,8 @@ public class JpaApplication {
 			//repository.save(author);
 
 			// Update Author a set a.age = 22 where a.id =  1
-			repository.updateAuthor(22, 1);
+			//repository.updateAuthor(22, 1);
+			repository.updateByNamedQuery(100,1);
 		};
 	}
 
